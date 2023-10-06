@@ -26,4 +26,31 @@ const Product = mongoose.model("Product", {
   },
 });
 
-module.exports = { Product };
+const User = mongoose.model("User", {
+  id:{
+    type: String,
+    require: true,
+  },
+  nama:{
+    type: String,
+    require: true,
+  },
+  jk:{
+    type: String,
+    require: true,
+  },
+  alamat:{
+    type: String,
+    require: true,
+  },
+  nohp:{
+    type: String,
+    require: true,
+  },
+  image:{
+    type: String,
+    require: true,
+  },
+})
+
+module.exports = { Product,User };

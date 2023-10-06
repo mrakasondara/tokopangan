@@ -394,13 +394,15 @@ a:hover {
 .data p {
   font-size: 13px;
 }
+.data p.harga {
+  font-weight: 800;
+}
 .box-product .image {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 50%;
   height: 100%;
-  border: 1px solid;
 }
 .box-product img {
   width: 130px;

@@ -1,1 +1,19 @@
 <h2>Data User</h2>
+<div class="aksi">
+  <button class="tambah">Tambah Produk</button>
+</div>
+<div class="row-product">
+  <% users.forEach(user =>{ %>
+
+  <div class="box-product">
+    <div class="image">
+      <img src="/user_img/<%= user.image %>" alt="" class="product" />
+    </div>
+    <div class="data">
+      <h4><%= user.nama %></h4>
+      <p class="stok"><%= user.nohp %></p>
+      <p class="harga"><%= user.alamat %></p>
+    </div>
+  </div>
+  <% }) %>
+</div>

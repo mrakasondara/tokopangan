@@ -9,7 +9,7 @@
   </div>
   <div class="box user">
     <h4 class="title">Total User</h4>
-    <p class="value">5</p>
+    <p class="value"><%= userLength %></p>
   </div>
   <div class="box order">
     <h4 class="title">Total Penjualan</h4>
@@ -34,7 +34,7 @@
           <% products.forEach(p =>{ %>
           <tr>
             <td>
-              <img src="img/<%= p.image %>" alt="" class="thumb" />
+              <img src="/img/<%= p.image %>" alt="" class="thumb" />
             </td>
             <td><%= p.nama %></td>
             <td><%= p.jenis %></td>
