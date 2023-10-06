@@ -1,0 +1,102 @@
+<div class="hero">
+  <h4>Toko Pangan Harian</h4>
+  <p>Di buat pada tanggal 29 September 2023</p>
+</div>
+<div class="row">
+  <div class="box product">
+    <h4 class="title">Total Product</h4>
+    <p class="value"><%= productLength %></p>
+  </div>
+  <div class="box user">
+    <h4 class="title">Total User</h4>
+    <p class="value">5</p>
+  </div>
+  <div class="box order">
+    <h4 class="title">Total Penjualan</h4>
+    <p class="value">20</p>
+  </div>
+</div>
+<div class="wrapper">
+  <div class="recent-product">
+    <div class="title">
+      <span class="material-symbols-outlined">print</span>
+      <h4>Produk Terbaru</h4>
+      <span class="material-symbols-outlined">open_in_new</span>
+    </div>
+    <div class="data">
+      <table>
+        <thead>
+          <th>Foto</th>
+          <th>Nama Produk</th>
+          <th>Jenis</th>
+        </thead>
+        <tbody>
+          <% products.forEach(p =>{ %>
+          <tr>
+            <td>
+              <img src="img/<%= p.image %>" alt="" class="thumb" />
+            </td>
+            <td><%= p.nama %></td>
+            <td><%= p.jenis %></td>
+          </tr>
+          <%}) %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="recent-order">
+    <div class="title">
+      <span class="material-symbols-outlined">print</span>
+      <h4>Transaksi Terbaru</h4>
+      <span class="material-symbols-outlined">open_in_new</span>
+    </div>
+    <div class="data">
+      <table>
+        <thead>
+          <th>No.</th>
+          <th>Nama Pengguna</th>
+          <th>Total Produk</th>
+          <th>Total Harga</th>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>Anonim</td>
+            <td>4 Pcs</td>
+            <td>Rp. 250.000</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>Anonim</td>
+            <td>4 Pcs</td>
+            <td>Rp. 250.000</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>Anonim</td>
+            <td>4 Pcs</td>
+            <td>Rp. 250.000</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>Anonim</td>
+            <td>4 Pcs</td>
+            <td>Rp. 250.000</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>Anonim</td>
+            <td>4 Pcs</td>
+            <td>Rp. 250.000</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>Anonim</td>
+            <td>4 Pcs</td>
+            <td>Rp. 250.000</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,57 @@
+<h2>Data Produk</h2>
+<div class="aksi">
+  <button class="tambah">Tambah Produk</button>
+</div>
+<div class="row-product">
+  <% products.forEach(p =>{ %>
+
+  <div class="box-product">
+    <div class="data">
+      <h4><%= p.nama %></h4>
+      <p class="stok"><%= p.stok %></p>
+      <p class="date">30-9-2023</p>
+    </div>
+    <div class="image">
+      <img src="/img/<%= p.image %>" alt="" class="product" />
+    </div>
+  </div>
+  <% }) %>
+</div>
+<div class="popup">
+  <div class="form">
+    <h2>Tambah Produk</h2>
+    <form method="post" action="/dashboard/produk" enctype="multipart/form-data">
+      <input type="hidden" name="id" id="id" value="<%= id %>" />
+      <div class="form-input">
+        <label for="nama">Nama Produk</label>
+        <input type="text" name="nama" id="nama" placeholder="Nama Produk" />
+      </div>
+      <div class="form-input">
+        <label for="harga">Harga Produk</label>
+        <input type="text" name="harga" id="harga" placeholder="Harga Produk" />
+      </div>
+      <div class="form-input">
+        <label for="stok">Stok Produk</label>
+        <input type="text" name="stok" id="stok" placeholder="Stok Produk" />
+      </div>
+      <div class="form-input">
+        <label for="jenis">Jenis Produk</label>
+        <input type="text" name="jenis" id="jenis" placeholder="Jenis Produk" />
+      </div>
+      <div class="form-input">
+        <label for="image">Image Produk</label>
+        <input
+          type="file"
+          name="image"
+          id=""
+          placeholder="Image Produk"
+          class="file"
+        />
+      </div>
+      <div class="form-action">
+        <button class="close" type="button">Kembali</button>
+        <button type="submit" class="tambah">Tambah</button>
+      </div>
+    </form>
+  </div>
+</div>

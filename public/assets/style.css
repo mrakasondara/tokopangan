@@ -1,0 +1,568 @@
+*,
+body,
+html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root {
+  --bg-p: #eeeded;
+  --bg-s: #b9b4c7;
+  /* --bg-s: #32e447; */
+  --text-p: #352f44;
+  --text-box: #eeeded;
+  --text-active: #b3ffae;
+}
+body {
+  height: 120vh;
+}
+.container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  background-color: var(--bg-p);
+  transition: 0.8s all ease-in;
+}
+.container .sidebar {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 15%;
+  background-color: var(--bg-p);
+  font-family: "Roboto Mono", monospace;
+  transition: 0.8s all ease-in;
+}
+.container .main {
+  display: flex;
+  height: auto;
+  width: 85%;
+  background-color: var(--bg-s);
+  border-radius: 30px 30px 0 0;
+  margin-top: 10px;
+  padding: 0 20px;
+  transition: 0.8s all ease-in;
+}
+.sidebar .title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid var(--text-p);
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 20px 0;
+}
+.sidebar .title h4 {
+  font-size: 2rem;
+  color: var(--text-p);
+  transition: 0.8s all ease-in;
+}
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid var(--text-p);
+  margin: 20px 0;
+  padding-bottom: 40px;
+  width: 100%;
+}
+.nav ol {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  width: 100%;
+}
+.nav ol li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 0;
+}
+li a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--text-p);
+  font-size: 20px;
+  transition: 0.8s;
+  /* font-weight: 800; */
+  width: 80%;
+  padding: 5px;
+  transition: 0.8s ease-in;
+}
+
+a:hover {
+  border-radius: 6px;
+  background-color: var(--text-active);
+  transition: 0.5s all ease-in;
+  color: var(--text-p-dark);
+}
+
+.nav.option {
+  margin: -20px 0;
+  border: none;
+}
+.sidebar .theme {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  color: var(--text-p);
+  transition: 0.8s all ease-in;
+}
+.theme span {
+  display: none;
+  /* color: var(--text-p); */
+}
+.theme span.active {
+  display: block;
+}
+.theme span:hover {
+  cursor: pointer;
+}
+
+.content {
+  height: 100%;
+  width: 100%;
+  font-family: "Poppins", sans-serif;
+}
+.content .head {
+  display: flex;
+  height: 5%;
+  margin-top: 15px;
+  color: var(--text-p);
+  transition: 0.8s all ease-in;
+}
+.head span.burger {
+  display: none;
+}
+.head input.search {
+  border: none;
+  outline: none;
+  background-color: var(--bg-p);
+  width: 20%;
+  border-radius: 12px;
+  padding: 0 10px;
+  color: var(--text-p);
+  box-shadow: 0 0 3px 1px var(--text-p);
+  transition: 0.8s all ease-in;
+}
+.head input::placeholder {
+  color: var(--text-p);
+}
+
+.head .user {
+  display: flex;
+  align-items: center;
+  margin-right: auto;
+  height: 100%;
+}
+.user h4 {
+  margin-left: 10px;
+}
+.content .dinamis {
+  position: relative;
+  width: 100%;
+  height: 80%;
+  margin: 10px 0;
+  padding: 10px 50px;
+}
+.dinamis .hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  background-image: url("https://cdn.suwalls.com/wallpapers/photography/grocery-store-32227-1920x1200.jpg");
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  height: 35%;
+  box-shadow: 0 0 15px 1px var(--text-p);
+  border-radius: 8px;
+  margin-bottom: 20px;
+  padding-inline: 20px;
+}
+.hero h4 {
+  font-variant: small-caps;
+  font-weight: 800;
+  font-size: 3rem;
+  color: var(--text-active);
+}
+.hero p {
+  text-transform: capitalize;
+  font-size: smaller;
+  color: var(--text-box);
+  margin-bottom: 10px;
+}
+.dinamis .row {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 30%;
+  margin: 20px 0;
+}
+.row .box {
+  display: flex;
+  flex-direction: column;
+  padding-inline: 20px;
+  justify-content: flex-end;
+  width: 20%;
+  height: 60%;
+  border-radius: 8px;
+  background-color: var(--bg-p);
+  box-shadow: 0 0 15px 1px var(--text-p);
+  padding-bottom: 10px;
+  transition: 0.8s all ease-in;
+  color: var(--text-box);
+}
+
+.box.product {
+  background-image: url("https://itk-assets.nyc3.digitaloceanspaces.com/2020/03/grocery-delivery-services-1024x690.jpg");
+  background-size: cover;
+}
+
+.box.user {
+  background-image: url("https://thumbs.dreamstime.com/b/crowd-people-big-group-different-vector-217219663.jpg");
+  background-size: cover;
+}
+
+.box.order {
+  background-image: url("https://th.bing.com/th/id/OIP.UlGckKqFn4Pj8K10ZGYffwHaE7?pid=ImgDet&rs=1");
+  background-size: cover;
+}
+
+.box p.value {
+  font-size: 14px;
+}
+
+.content .wrapper {
+  display: flex;
+  gap: 5%;
+  align-items: center;
+  width: 100%;
+  height: 40%;
+  margin: 10px 0;
+}
+
+.wrapper .recent-product {
+  display: flex;
+  flex-direction: column;
+  width: 35%;
+  height: 100%;
+  background-color: var(--bg-p);
+  box-shadow: 0 0 15px 1px var(--text-p);
+  border-radius: 8px;
+  color: var(--text-p);
+  transition: 0.8s ease-in;
+}
+
+.recent-product .title {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  height: 10%;
+  margin: 10px 0;
+}
+.title h4 {
+  color: var(--text-p);
+  font-size: 17px;
+}
+.title span {
+  color: var(--text-p);
+}
+.title span:hover {
+  cursor: pointer;
+}
+.recent-product .data {
+  display: flex;
+  width: 100%;
+  height: 75%;
+  padding: 10px;
+  margin-bottom: 10px;
+  overflow: auto;
+}
+.data table {
+  text-align: center;
+  width: 100%;
+}
+.data table td {
+  padding: 5px 0;
+}
+.data img.thumb {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+}
+.wrapper .recent-order {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  height: 100%;
+  background-color: var(--bg-p);
+  box-shadow: 0 0 15px 1px var(--text-p);
+  color: var(--text-p);
+  border-radius: 8px;
+  transition: 0.8s ease-in;
+}
+.recent-order .title {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  height: 10%;
+  margin: 10px 0;
+}
+.recent-order .data {
+  display: flex;
+  width: 100%;
+  height: 75%;
+  padding: 10px;
+  margin-bottom: 10px;
+  /* overflow-y: scroll; */
+  overflow: auto;
+}
+
+/*  product ejs  */
+.dinamis .row-product {
+  display: flex;
+  justify-content: space-around;
+  column-gap: 10px;
+  row-gap: 2rem;
+  flex-wrap: wrap;
+  padding: 10px 0;
+  height: 100%;
+  width: 100%;
+  /* overflow-y: auto; */
+  overflow: auto;
+}
+
+.dinamis h2 {
+  color: var(--text-p);
+  transition: 0.8s ease-in-out;
+}
+
+.dinamis .aksi {
+  display: flex;
+  width: 100%;
+  height: 10%;
+  margin-top: 10px;
+}
+.aksi button {
+  padding-inline: 10px;
+  background-color: rgb(22, 216, 22);
+  letter-spacing: 2px;
+  height: 50%;
+  outline: none;
+  border-radius: 8px;
+  border: none;
+  color: var(--text-box);
+  box-shadow: 0 0 5px 1px var(--text-p);
+  transition: 0.8s ease-in;
+}
+.aksi button:hover {
+  background-color: rgb(31, 173, 31);
+  cursor: pointer;
+}
+.row-product .box-product {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  height: 20%;
+  width: 25%;
+  border-radius: 8px;
+  background-color: var(--bg-p);
+  box-shadow: 0 0 15px 1px var(--text-p);
+  /* padding: 20px 10px; */
+  color: var(--text-p);
+  transition: 0.8s ease-in;
+}
+.box-product .data {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 50%;
+  height: 100%;
+}
+.data h4 {
+  font-size: 20px;
+}
+.data p {
+  font-size: 13px;
+}
+.box-product .image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  height: 100%;
+  border: 1px solid;
+}
+.box-product img {
+  width: 130px;
+  height: 105px;
+}
+
+/* popup */
+
+.popup {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  top: 40%;
+  right: 50%;
+  transform: translate(50%, -50%);
+  height: 80%;
+  width: 90%;
+  scale: 0;
+  transition: scale 0.8s ease-in;
+}
+/* .popup .tambah-data {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  margin-top: 10px;
+} */
+.popup .form {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  width: 50%;
+  height: auto;
+  padding-inline: 20px;
+  background-color: var(--bg-p);
+  border-radius: 18px;
+}
+.popup h2 {
+  margin-top: 20px;
+}
+.popup .form-input {
+  display: flex;
+  margin: 10px 0;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  color: var(--text-p);
+  margin-top: 10px;
+  /* border: 1px solid; */
+}
+
+.form-input input {
+  border: none;
+  outline: none;
+  height: 30px;
+  width: 100%;
+  box-shadow: 0 0 10px 2px var(--text-p);
+  padding-inline: 10px;
+  font-size: 15px;
+  border-radius: 8px;
+}
+.form-input input.file {
+  padding-top: 5px;
+}
+.form-action {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  margin-top: 50px;
+  gap: 10px;
+}
+.form-action button.tambah {
+  height: 35px;
+  padding-inline: 20px;
+  border-radius: 8px;
+  outline: none;
+  border: none;
+  box-shadow: 0 0 5px 2px var(--text-p);
+  background-color: rgb(22, 216, 22);
+  color: var(--text-p);
+  transition: 0.8s ease-in-out;
+}
+.form-action button.tambah:hover {
+  cursor: pointer;
+  background-color: rgb(31, 173, 31);
+}
+button.close {
+  height: 35px;
+  padding-inline: 20px;
+  border-radius: 8px;
+  outline: none;
+  border: none;
+  box-shadow: 0 0 5px 2px var(--text-p);
+  background-color: rgb(231, 18, 18);
+  color: var(--text-p);
+  transition: 0.8s ease-in-out;
+}
+button.close:hover {
+  cursor: pointer;
+  background-color: rgb(200, 28, 28);
+}
+.showpopup {
+  scale: 1;
+}
+
+/* menu sidebar */
+.closemenu {
+  display: none;
+}
+
+@media screen and (max-width: 1400px) {
+  .row-product .box-product {
+    width: 40%;
+  }
+}
+@media screen and (max-width: 1300px) {
+  .container .sidebar.flexsidebar {
+    width: 15%;
+  }
+  .head span.burger {
+    display: block;
+  }
+  .container .main.flexmain {
+    width: 85%;
+  }
+  .container .nav a span.link.flexlink {
+    display: block;
+  }
+
+  .container .sidebar {
+    width: 10%;
+  }
+  .container .main {
+    width: 90%;
+  }
+
+  .nav a {
+    width: auto;
+  }
+  .nav a .alink {
+    width: 80%;
+  }
+  .nav a span.link {
+    display: none;
+  }
+}
+@media screen and (max-width: 1000px) {
+  .row-product .box-product {
+    width: 45%;
+  }
+}
+@media screen and (max-width: 780px) {
+  .dinamis .row {
+    justify-content: space-between;
+    height: 70%;
+  }
+  .row .box {
+    height: 40%;
+    width: 45%;
+  }
+  .box.order {
+    flex-grow: 1;
+  }
+}
