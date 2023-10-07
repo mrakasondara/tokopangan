@@ -14,13 +14,22 @@
     <div class="image">
       <img src="/img/<%= p.image %>" alt="" class="product" />
     </div>
+    <div class="aksi">
+      <a href="/dashboard/produk/detail/<%= p.id %>" class="badge detail">Detail</a href="">
+      <a href="/dashboard/produk/ubah/<%= p.id %>" class="badge ubah">Ubah</a href="">
+      <a href="/dashboard/produk/hapus/<%= p.id %>" class="badge hapus">Hapus</a href="">
+    </div>
   </div>
   <% }) %>
 </div>
 <div class="popup">
   <div class="form">
     <h2>Tambah Produk</h2>
-    <form method="post" action="/dashboard/produk" enctype="multipart/form-data">
+    <form
+      method="post"
+      action="/dashboard/produk"
+      enctype="multipart/form-data"
+    >
       <input type="hidden" name="id" id="id" value="<%= id %>" />
       <div class="form-input">
         <label for="nama">Nama Produk</label>

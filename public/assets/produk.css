@@ -1,0 +1,125 @@
+/*  product ejs  */
+.dinamis .row-product {
+  display: flex;
+  justify-content: space-around;
+  column-gap: 10px;
+  row-gap: 2rem;
+  flex-wrap: wrap;
+  padding: 10px 0;
+  height: 100%;
+  width: 100%;
+  /* overflow-y: auto; */
+  overflow: auto;
+}
+
+.dinamis h2 {
+  color: var(--text-p);
+  transition: 0.8s ease-in-out;
+}
+
+.dinamis .aksi {
+  display: flex;
+  width: 100%;
+  height: 10%;
+  margin-top: 10px;
+}
+.aksi button {
+  padding-inline: 10px;
+  background-color: rgb(22, 216, 22);
+  letter-spacing: 2px;
+  height: 50%;
+  outline: none;
+  border-radius: 8px;
+  border: none;
+  color: var(--text-box);
+  box-shadow: 0 0 5px 1px var(--text-p);
+  transition: 0.8s ease-in;
+}
+.aksi button:hover {
+  background-color: rgb(31, 173, 31);
+  cursor: pointer;
+}
+.row-product .box-product {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  height: 25%;
+  width: 25%;
+  border-radius: 8px;
+  background-color: var(--bg-p);
+  box-shadow: 0 0 15px 1px var(--text-p);
+  /* padding: 20px 10px; */
+  color: var(--text-p);
+  transition: 0.8s ease-in;
+}
+.box-product .data {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 50%;
+  height: 100%;
+}
+.data h4 {
+  font-size: 20px;
+}
+.data p {
+  font-size: 13px;
+}
+.data p.harga {
+  font-weight: 800;
+}
+.box-product .image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  height: 100%;
+}
+.box-product img {
+  width: 130px;
+  height: 105px;
+}
+.box-product .aksi {
+  position: absolute;
+  bottom: 10px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 5px;
+  padding-inline: 10px;
+}
+
+.aksi a.badge {
+  font-size: 15px;
+  border-radius: 8px;
+  padding-inline: 10px;
+  height: 20px;
+  color: var(--text-box);
+  font-weight: 800;
+  text-decoration: none;
+  background-color: rgb(46, 212, 46);
+  cursor: pointer;
+}
+a.badge.hapus {
+  background-color: rgb(200, 32, 32);
+}
+a.badge.hapus:hover {
+  background-color: rgb(172, 29, 29);
+}
+a.badge.ubah {
+  background-color: rgb(46, 212, 46);
+}
+a.badge.ubah:hover {
+  background-color: rgb(43, 180, 43);
+}
+a.badge.detail {
+  background-color: rgb(224, 236, 0);
+  color: black;
+}
+a.badge.detail:hover {
+  background-color: rgb(202, 212, 12);
+}

@@ -77,26 +77,51 @@ app.post("/dashboard/produk", multerUpload.single("image"), (req, res) => {
 app.get("/dashboard/penjualan", (req, res) => {
   res.render("dashboard/penjualan", {
     layout: "layouts/layout",
-    title: "Data Penjualan| Dashboard Admin",
+    title: "Data Penjualan | Dashboard Admin",
     nama: "Muhammad Raka",
   });
 });
-
+app.get("/dashboard/produk/detail/:id", (req, res) => {
+  console.log(req.params.id);
+  res.redirect("/dashboard/produk");
+});
+app.get("/dashboard/produk/ubah/:id", (req, res) => {
+  console.log(req.params.id);
+  res.redirect("/dashboard/produk");
+});
+app.get("/dashboard/produk/hapus/:id", (req, res) => {
+  Product.deleteOne({ id: req.params.id }).then((result) => {
+    res.redirect("/dashboard/produk");
+  });
+});
 app.get("/dashboard/user", async (req, res) => {
   const users = await User.find();
   const id = generateId(5);
   res.render("dashboard/user", {
     layout: "layouts/layout",
-    title: "Data User| Dashboard Admin",
+    title: "Data User | Dashboard Admin",
     nama: "Muhammad Raka",
     users,
     id,
   });
 });
 
-app.post("/dashboard/user", (req, res) => {
-  console.log(req.body.nama);
+app.post("/dashboard/user", multerUploadUser.single("image"), (req, res) => {
+  const img = req.file ? req.file.originalname : generateImage(req.body.jk);
+  User.insertMany({
+    id: req.body.id,
+    nama: req.body.nama,
+    jk: req.body.jk,
+    alamat: req.body.alamat,
+    nohp: req.body.nohp,
+    image: img,
+  });
   res.redirect("/dashboard/user");
+});
+app.get("/dashboard/user/hapus/:id", (req, res) => {
+  User.deleteOne({ id: req.params.id }).then((result) => {
+    res.redirect("/dashboard/user");
+  });
 });
 
 // app.use("/", (req, res) => {

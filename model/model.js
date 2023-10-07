@@ -35,6 +35,15 @@ const User = mongoose.model("User", {
     type: String,
     require: true,
   },
+  username:{
+    type: String,
+    require: true,
+  },
+  password:{
+    type: String,
+    require: true,
+  },
+
   jk:{
     type: String,
     require: true,

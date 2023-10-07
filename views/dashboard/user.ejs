@@ -1,19 +1,66 @@
 <h2>Data User</h2>
 <div class="aksi">
-  <button class="tambah">Tambah Produk</button>
+  <button class="tambah">Tambah User</button>
 </div>
-<div class="row-product">
+<div class="row-user">
   <% users.forEach(user =>{ %>
-
-  <div class="box-product">
+  <div class="box-user">
     <div class="image">
-      <img src="/user_img/<%= user.image %>" alt="" class="product" />
+      <img src="/user_img/<%= user.image %>" alt="" class="user" />
     </div>
     <div class="data">
       <h4><%= user.nama %></h4>
-      <p class="stok"><%= user.nohp %></p>
-      <p class="harga"><%= user.alamat %></p>
+      <p class="nohp"><%= user.nohp %></p>
+      <p class="alamat"><%= user.alamat %></p>
+    </div>
+    <div class="aksi">
+      <a href="/dashboard/user/detail/<%= user.id %>" class="badge detail"
+        >Detail</a
+      >
+      <a href="/dashboard/user/ubah/<%= user.id %>" class="badge ubah">Ubah</a>
+      <a href="/dashboard/user/hapus/<%= user.id %>" class="badge hapus"
+        >Hapus</a
+      >
     </div>
   </div>
   <% }) %>
+</div>
+<div class="popup">
+  <div class="form">
+    <h2>Tambah User</h2>
+    <form action="/dashboard/user" method="post" enctype="multipart/form-data">
+      <input type="hidden" name="id" id="id" value="<%= id %>" />
+      <div class="form-input">
+        <label for="nama">Nama Lengkap</label>
+        <input type="text" name="nama" id="nama" />
+      </div>
+      <div class="form-input">
+        <label for="username">Username</label>
+        <input type="text" name="username" id="username" />
+      </div>
+      <div class="form-input">
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password" />
+      </div>
+      <div class="form-input">
+        <label for="jk">Jenis Kelamin</label>
+        <div class="form-row">
+          <input type="radio" name="jk" id="jk" value="Laki-Laki" />Laki-Laki
+          <input type="radio" name="jk" id="jk" value="Perempuan" />Perempuan
+        </div>
+      </div>
+      <div class="form-input">
+        <label for="alamat">Alamat</label>
+        <input type="text" name="alamat" id="alamat" />
+      </div>
+      <div class="form-input">
+        <label for="nohp">No. Handphone</label>
+        <input type="number" name="nohp" id="nohp" />
+      </div>
+      <div class="form-action">
+        <button class="close" type="button">Close</button>
+        <button type="submit" class="tambah">Tambah</button>
+      </div>
+    </form>
+  </div>
 </div>
