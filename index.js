@@ -1,12 +1,14 @@
 const express = require("express");
-// const fileUpload = require("express-fileupload");
+const session = require("express-session");
+const cookieParser = require("cookie-parser");
+const flash = require("connect-flash");
 const multer = require("multer");
 const expressLayout = require("express-ejs-layouts");
 const app = express();
 const port = 3000;
 const { generateId, generateImage } = require("./utils/generate");
+const methodOverride = require("method-override");
 
-// app.use(fileUpload());
 // multer
 const multerDiskStorage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -30,6 +32,20 @@ app.set("view engine", "ejs");
 app.use(expressLayout);
 app.use(express.static("public"));
 
+// override
+app.use(methodOverride("_method"));
+
+// notif
+app.use(cookieParser("secret"));
+app.use(
+  session({
+    cookie: { maxAge: 6000 },
+    secret: "secret",
+    resave: true,
+    saveUninitialized: true,
+  })
+);
+app.use(flash());
 app.use(express.urlencoded({ extended: true }));
 
 // mongoose
@@ -61,6 +77,7 @@ app.get("/dashboard/produk", async (req, res) => {
     nama: "Muhammad Raka",
     products,
     id,
+    msg: req.flash("msg"),
   });
 });
 app.post("/dashboard/produk", multerUpload.single("image"), (req, res) => {
@@ -72,6 +89,7 @@ app.post("/dashboard/produk", multerUpload.single("image"), (req, res) => {
     image: req.file.originalname,
     jenis: req.body.jenis,
   });
+  req.flash("msg", "Data Produk Berhasil Ditambahkan !");
   res.redirect("/dashboard/produk");
 });
 app.get("/dashboard/penjualan", (req, res) => {
@@ -91,6 +109,7 @@ app.get("/dashboard/produk/ubah/:id", (req, res) => {
 });
 app.get("/dashboard/produk/hapus/:id", (req, res) => {
   Product.deleteOne({ id: req.params.id }).then((result) => {
+    req.flash("msg", "Data Produk Berhasil Ditambahkan !");
     res.redirect("/dashboard/produk");
   });
 });
@@ -103,6 +122,7 @@ app.get("/dashboard/user", async (req, res) => {
     nama: "Muhammad Raka",
     users,
     id,
+    msg: req.flash("msg"),
   });
 });
 
@@ -116,10 +136,12 @@ app.post("/dashboard/user", multerUploadUser.single("image"), (req, res) => {
     nohp: req.body.nohp,
     image: img,
   });
+  req.flash("msg", "Data User Berhasil Ditambahkan !");
   res.redirect("/dashboard/user");
 });
 app.get("/dashboard/user/hapus/:id", (req, res) => {
   User.deleteOne({ id: req.params.id }).then((result) => {
+    req.flash("msg", "Data Produk Berhasil Dihapus !");
     res.redirect("/dashboard/user");
   });
 });

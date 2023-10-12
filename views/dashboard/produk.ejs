@@ -1,7 +1,10 @@
 <h2>Data Produk</h2>
-<div class="aksi">
+<div class="aksi-tambah">
   <button class="tambah">Tambah Produk</button>
 </div>
+<% if (msg.length != 0 ){ %>
+  <div class="message"><%= msg %></div>
+<%}%>
 <div class="row-product">
   <% products.forEach(p =>{ %>
 
