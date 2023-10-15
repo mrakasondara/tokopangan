@@ -20,7 +20,10 @@
     <div class="aksi">
       <a href="/dashboard/produk/detail/<%= p.id %>" class="badge detail">Detail</a href="">
       <a href="/dashboard/produk/ubah/<%= p.id %>" class="badge ubah">Ubah</a href="">
-      <a href="/dashboard/produk/hapus/<%= p.id %>" class="badge hapus">Hapus</a href="">
+      <form action="/dashboard/produk?_method=DELETE" method="post">
+        <input type="hidden" name="id" value="<%= p.id %>">
+        <button type="submit" class="badge hapus" onclick="return confirm('anda yakin?')">Hapus</button>
+      </form>
     </div>
   </div>
   <% }) %>

@@ -1,0 +1,82 @@
+<h2>Ubah User <%= user.nama %></h2>
+<div class="wrapper-ubah user">
+  <div class="image">
+    <img src="/user_img/<%= user.image %>" alt="" />
+  </div>
+  <div class="form">
+    <form
+      method="post"
+      action="/dashboard/user?_method=PUT"
+      enctype="multipart/form-data"
+    >
+      <input type="hidden" name="id" value="<%= user.id %>" />
+      <div class="form-input">
+        <label for="nama">Nama Lengkap</label>
+        <input
+          type="text"
+          name="nama"
+          id="nama"
+          placeholder="Nama Lengkap"
+          value="<%= user.nama %>"
+        />
+      </div>
+      <div class="form-input">
+        <label for="username">Username</label>
+        <input
+          type="text"
+          name="username"
+          id="username"
+          placeholder="Username"
+          value="<%= user.username %>"
+        />
+      </div>
+      <div class="form-input">
+        <label for="email">E-mail</label>
+        <input
+          type="text"
+          name="email"
+          id="email"
+          placeholder="E-mail"
+          value="<%= user.email %>"
+        />
+      </div>
+      <div class="form-input">
+        <label for="alamat">Alamat</label>
+        <input
+          type="text"
+          name="alamat"
+          id="alamat"
+          placeholder="Alamat"
+          value="<%= user.alamat %>"
+        />
+      </div>
+      <div class="form-input">
+        <label for="nohp">No. Handphone</label>
+        <input
+          type="text"
+          name="nohp"
+          id="nohp"
+          placeholder="No. Handphone"
+          value="<%= user.nohp %>"
+        />
+      </div>
+      <div class="form-input">
+        <label for="image">Foto Profil</label>
+        <input
+          type="file"
+          name="image"
+          id=""
+          placeholder="Foto Profil"
+          class="file"
+        />
+      </div>
+      <div class="form-action">
+        <a href="/dashboard/user" class="close">Kembali</a>
+        <a href="/dashboard/user/ubahpassword/<%= user.id %>" class="ubah"
+          >Ubah Password</a
+        >
+        <button type="submit" class="ubah">Ubah</button>
+      </div>
+    </form>
+  </div>
+</div>

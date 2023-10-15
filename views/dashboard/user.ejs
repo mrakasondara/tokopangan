@@ -2,6 +2,9 @@
 <div class="aksi-tambah">
   <button class="tambah">Tambah User</button>
 </div>
+<% if (msg.length != 0 ){ %>
+<div class="message"><%= msg %></div>
+<%}%>
 <div class="row-user">
   <% users.forEach(user =>{ %>
   <div class="box-user">
@@ -18,9 +21,12 @@
         >Detail</a
       >
       <a href="/dashboard/user/ubah/<%= user.id %>" class="badge ubah">Ubah</a>
-      <a href="/dashboard/user/hapus/<%= user.id %>" class="badge hapus"
-        >Hapus</a
-      >
+      <form action="/dashboard/user?_method=DELETE" method="post">
+        <input type="hidden" name="id" value="<%= user.id %>" />
+        <button class="badge hapus" onclick="return confirm('anda yakin?')">
+          Hapus
+        </button>
+      </form>
     </div>
   </div>
   <% }) %>
@@ -28,34 +34,47 @@
 <div class="popup">
   <div class="form">
     <h2>Tambah User</h2>
-    <form action="/dashboard/user" method="post" enctype="multipart/form-data">
+    <form
+      action="/dashboard/user"
+      method="post"
+      enctype="multipart/form-data"
+      class="user-input"
+    >
       <input type="hidden" name="id" id="id" value="<%= id %>" />
-      <div class="form-input">
+      <div class="form-input user">
         <label for="nama">Nama Lengkap</label>
         <input type="text" name="nama" id="nama" />
       </div>
-      <div class="form-input">
+      <div class="form-input user">
         <label for="username">Username</label>
         <input type="text" name="username" id="username" />
       </div>
-      <div class="form-input">
+      <div class="form-input user">
+        <label for="email">E-mail</label>
+        <input type="text" name="email" id="email" />
+      </div>
+      <div class="form-input user">
         <label for="password">Password</label>
         <input type="password" name="password" id="password" />
       </div>
-      <div class="form-input">
+      <div class="form-input user">
         <label for="jk">Jenis Kelamin</label>
         <div class="form-row">
           <input type="radio" name="jk" id="jk" value="Laki-Laki" />Laki-Laki
           <input type="radio" name="jk" id="jk" value="Perempuan" />Perempuan
         </div>
       </div>
-      <div class="form-input">
+      <div class="form-input user">
         <label for="alamat">Alamat</label>
         <input type="text" name="alamat" id="alamat" />
       </div>
-      <div class="form-input">
+      <div class="form-input user">
         <label for="nohp">No. Handphone</label>
         <input type="number" name="nohp" id="nohp" />
+      </div>
+      <div class="form-input user">
+        <label for="file">Foto Profil</label>
+        <input type="file" name="image" id="image" class="file" />
       </div>
       <div class="form-action">
         <button class="close" type="button">Close</button>

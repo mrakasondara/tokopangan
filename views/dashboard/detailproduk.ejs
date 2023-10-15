@@ -1,0 +1,27 @@
+<h2>Detail Produk <span class="highlight"><%= product.nama %></span></h2>
+<div class="wrapper-detail">
+  <div class="image">
+    <img src="/img/<%= product.image %>" alt="" />
+  </div>
+  <div class="detail">
+    <div class="text-group">
+      <label for="">Nama Produk</label>
+      <h4><%= product.nama %></h4>
+    </div>
+    <div class="text-group">
+      <label for="">Harga Produk</label>
+      <h4>Rp. <%= product.harga %></h4>
+    </div>
+    <div class="text-group">
+      <label for="">Stok Produk</label>
+      <h4><%= product.stok %></h4>
+    </div>
+    <div class="text-group">
+      <label for="">Jenis Produk</label>
+      <h4><%= product.jenis %></h4>
+    </div>
+    <div class="aksi">
+      <a class="close" href="/dashboard/produk">Kembali</a>
+    </div>
+  </div>
+</div>

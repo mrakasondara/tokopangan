@@ -1,0 +1,69 @@
+<h2>Ubah Produk <%= product.nama %></h2>
+<div class="wrapper-ubah">
+  <div class="image">
+    <img src="/img/<%= product.image %>" alt="" />
+  </div>
+  <div class="form">
+    <form
+      method="post"
+      action="/dashboard/ubahproduk?_method=PUT"
+      enctype="multipart/form-data"
+    >
+      <input type="hidden" name="id" value="<%= product.id %>" />
+      <div class="form-input">
+        <label for="nama">Nama Produk</label>
+        <input
+          type="text"
+          name="nama"
+          id="nama"
+          placeholder="Nama Produk"
+          value="<%= product.nama %>"
+        />
+      </div>
+      <div class="form-input">
+        <label for="harga">Harga Produk</label>
+        <input
+          type="text"
+          name="harga"
+          id="harga"
+          placeholder="Harga Produk"
+          value="<%= product.harga %>"
+        />
+      </div>
+      <div class="form-input">
+        <label for="stok">Stok Produk</label>
+        <input
+          type="text"
+          name="stok"
+          id="stok"
+          placeholder="Stok Produk"
+          value="<%= product.stok %>"
+        />
+      </div>
+      <div class="form-input">
+        <label for="jenis">Jenis Produk</label>
+        <input
+          type="text"
+          name="jenis"
+          id="jenis"
+          placeholder="Jenis Produk"
+          value="<%= product.jenis %>"
+        />
+      </div>
+      <div class="form-input">
+        <label for="image">Image Produk</label>
+        <input
+          type="file"
+          name="image"
+          id=""
+          placeholder="Image Produk"
+          class="file"
+        />
+      </div>
+      <div class="form-action">
+        <a href="/dashboard/produk" class="close">Kembali</a>
+        <button type="submit" class="ubah">Ubah</button>
+      </div>
+    </form>
+  </div>
+</div>

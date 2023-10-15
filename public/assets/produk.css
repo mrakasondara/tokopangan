@@ -79,6 +79,7 @@
   justify-content: center;
   width: 50%;
   height: 100%;
+  padding-inline: 10px;
 }
 .box-product img {
   width: 130px;
@@ -86,14 +87,25 @@
 }
 .box-product .aksi {
   position: absolute;
-  bottom: 10px;
   display: flex;
   justify-content: flex-end;
+  width: 100%;
+  bottom: 10px;
   gap: 5px;
   padding-inline: 10px;
 }
+.aksi form {
+  display: inline;
+}
+.aksi button.badge {
+  height: 20px;
+  outline: none;
+  border: none;
+  font-weight: 600;
+}
 
-.aksi a.badge {
+.aksi a.badge,
+button.badge {
   font-size: 15px;
   border-radius: 8px;
   padding-inline: 10px;
@@ -104,10 +116,10 @@
   background-color: rgb(46, 212, 46);
   cursor: pointer;
 }
-a.badge.hapus {
+button.badge.hapus {
   background-color: rgb(200, 32, 32);
 }
-a.badge.hapus:hover {
+button.badge.hapus:hover {
   background-color: rgb(172, 29, 29);
 }
 a.badge.ubah {
@@ -122,4 +134,127 @@ a.badge.detail {
 }
 a.badge.detail:hover {
   background-color: rgb(202, 212, 12);
+}
+
+/* ubah produk */
+span.highlight {
+  text-decoration: underline;
+}
+.dinamis .wrapper-ubah,
+.wrapper-detail {
+  display: flex;
+  width: 70%;
+  height: 50%;
+  background-color: var(--bg-p);
+  box-shadow: 0 0 5px 2px var(--text-p);
+  border-radius: 18px;
+  margin-top: 20px;
+  transition: 0.7s ease-in-out;
+}
+.wrapper-ubah .image,
+.wrapper-detail .image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30%;
+  height: 100%;
+  padding-inline: 10px;
+}
+
+.image img {
+  width: 100%;
+  height: 50%;
+}
+.wrapper-ubah .form,
+.wrapper-detail .detail {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70%;
+  height: 100%;
+}
+.form form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.form-input {
+  color: var(--text-p);
+  transition: 0.7s ease-in-out;
+}
+.form-action {
+  display: flex;
+  width: 100%;
+  margin-top: 0;
+}
+.form-action button.ubah,
+.form-action a {
+  height: 40px;
+  width: 85px;
+  padding-inline: 10px;
+  border-radius: 8px;
+  background-color: rgb(22, 216, 22);
+  outline: none;
+  border: none;
+  font-size: 17px;
+  color: var(--text-p);
+  box-shadow: 0 0 5px 2px var(--text-p);
+  transition: 0.7s ease-in-out;
+}
+.form-action button.ubah:hover {
+  background-color: rgb(31, 173, 31);
+  cursor: pointer;
+}
+.form-action a {
+  text-decoration: none;
+  line-height: 40px;
+  background-color: rgb(200, 32, 32);
+  transition: 0.7s ease-in-out;
+}
+.form-action a:hover {
+  background-color: rgb(172, 29, 29);
+  cursor: pointer;
+}
+/* detail produk */
+.dinamis .wrapper-detail {
+  width: 50%;
+}
+.wrapper-detail .image {
+  width: 50%;
+}
+.wrapper-detail .detail {
+  width: 50%;
+  flex-direction: column;
+  justify-content: space-evenly;
+  color: var(--text-p);
+}
+.detail .text-group {
+  display: flex;
+  width: 100%;
+  gap: 10px;
+  flex-direction: column;
+  align-items: center;
+  font-size: 17px;
+}
+.text-group label {
+  font-weight: 800;
+}
+.text-group h4 {
+  font-weight: normal;
+}
+.detail .aksi a {
+  display: inline-block;
+  height: 30px;
+  padding-inline: 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  line-height: 30px;
+  font-size: 17px;
+  background-color: rgb(22, 216, 22);
+  color: var(--text-p);
+  transition: 0.8s ease-in-out;
+}
+.detail .aksi a:hover {
+  background-color: rgb(31, 173, 31);
+  cursor: pointer;
 }

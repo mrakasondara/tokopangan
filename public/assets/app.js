@@ -52,28 +52,10 @@ closePopup.forEach((close) => {
 
 const openMenu = document.querySelector("span.burger");
 const closeMenu = document.querySelector("span.close");
-const sideBar = document.querySelector(".sidebar");
-const link = document.querySelectorAll("span.link");
-const aLink = document.querySelectorAll("a.link");
-openMenu.addEventListener("click", () => {
-  openMenu.classList.toggle("closemenu");
-  closeMenu.classList.toggle("closemenu");
-  sideBar.classList.toggle("flexsidebar");
-  link.forEach((lnk) => {
-    lnk.classList.toggle("flexlink");
-  });
-  aLink.forEach((a) => {
-    a.classList.toggle("alink");
-  });
-});
-closeMenu.addEventListener("click", () => {
-  openMenu.classList.toggle("closemenu");
-  closeMenu.classList.toggle("closemenu");
-  sideBar.classList.toggle("flexsidebar");
-  link.forEach((lnk) => {
-    lnk.classList.toggle("flexlink");
-  });
-  aLink.forEach((a) => {
-    a.classList.toggle("alink");
-  });
+const link = document.querySelectorAll(".nav a.link");
+const activePage = window.location();
+link.forEach((l) => {
+  if (l.href.include(`${activePage}`)) {
+    l.classList.add("linkactive");
+  }
 });

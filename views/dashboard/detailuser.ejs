@@ -1,0 +1,35 @@
+<h2>Detail User <span class="highlight"><%= user.nama %></span></h2>
+<div class="wrapper-detail">
+  <div class="image">
+    <img src="/user_img/<%= user.image %>" alt="" />
+  </div>
+  <div class="detail">
+    <div class="text-group">
+      <label for="nama">Nama Lengkap</label>
+      <h4><%= user.nama %></h4>
+    </div>
+    <div class="text-group">
+      <label for="username">Username</label>
+      <h4><%= user.username %></h4>
+    </div>
+    <div class="text-group">
+      <label for="email">E-mail</label>
+      <h4><%= user.email %></h4>
+    </div>
+    <div class="text-group">
+      <label for="jk">Jenis Kelamin</label>
+      <h4><%= user.jk %></h4>
+    </div>
+    <div class="text-group">
+      <label for="alamat">Alamat</label>
+      <h4><%= user.alamat %></h4>
+    </div>
+    <div class="text-group">
+      <label for="nohp">No. Handphone</label>
+      <h4><%= user.nohp %></h4>
+    </div>
+    <div class="aksi">
+      <a class="close" href="/dashboard/user">Kembali</a>
+    </div>
+  </div>
+</div>

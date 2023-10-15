@@ -77,10 +77,19 @@
   justify-content: center;
   width: 40%;
   height: 100%;
+  padding-inline: 10px;
 }
 img.user {
   width: 130px;
   height: 105px;
+}
+.popup .form-input.user {
+  margin: 5px 0;
+  gap: 5px;
+}
+
+.form form.user-input {
+  gap: 5px;
 }
 .form-row {
   display: flex;
@@ -93,6 +102,7 @@ input#jk {
   padding: 0;
   background-color: none;
 }
+
 .box-user .aksi {
   position: absolute;
   display: flex;
@@ -101,4 +111,28 @@ input#jk {
   bottom: 10px;
   width: 100%;
   padding-inline: 5px;
+}
+.aksi form {
+  display: inline;
+
+}
+
+.dinamis .wrapper-ubah.user {
+  height: 60%;
+}
+
+.form-action a.ubah {
+  width: auto;
+  background-color: rgb(22, 216, 22);
+}
+.form-action a.ubah:hover {
+  background-color: rgb(31, 173, 31);
+  cursor: pointer;
+}
+
+.wrapper-ubah .form.password {
+  width: 100%;
+}
+.form-action button.ubah{
+  width: auto;
 }

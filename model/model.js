@@ -39,11 +39,14 @@ const User = mongoose.model("User", {
     type: String,
     require: true,
   },
+  email:{
+    type: String,
+    require: true,
+  },
   password:{
     type: String,
     require: true,
   },
-
   jk:{
     type: String,
     require: true,

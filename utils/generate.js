@@ -1,3 +1,5 @@
+const fs = require("fs");
+
 const generateId = (n) => {
   let data = "";
   const angka = "0123456789";
@@ -17,4 +19,24 @@ const generateImage = (jk) => {
   }
 };
 
-module.exports = { generateId, generateImage };
+const deleteImage = (img) => {
+  const directory = process.cwd();
+  switch (img) {
+    case "1.png":
+      break;
+    case "2.png":
+      break;
+    case "3.png":
+      break;
+    case "4.png":
+      break;
+    case "5.png":
+      break;
+    case "6.png":
+      break;
+    default:
+      fs.unlinkSync(`${directory}/public/user_img/${img}`);
+  }
+};
+
+module.exports = { generateId, generateImage, deleteImage };

@@ -27,11 +27,13 @@ body {
 .container .sidebar {
   display: flex;
   flex-direction: column;
-  height: 100%;
+  height: 130vh;
   width: 15%;
   background-color: var(--bg-p);
   font-family: "Roboto Mono", monospace;
   transition: 0.8s all ease-in;
+  box-shadow: 0 0 10px 3px var(--text-p);
+  z-index: 2;
 }
 .container .main {
   display: flex;
@@ -99,6 +101,13 @@ a:hover {
   color: var(--text-p-dark);
 }
 
+.linkactive {
+  border-radius: 6px;
+  background-color: var(--text-active);
+  transition: 0.5s all ease-in;
+  color: var(--text-p-dark);
+}
+
 .nav.option {
   margin: -20px 0;
   border: none;
@@ -145,6 +154,7 @@ a:hover {
   padding: 0 10px;
   color: var(--text-p);
   box-shadow: 0 0 3px 1px var(--text-p);
+  font-size: 15px;
   transition: 0.8s all ease-in;
 }
 .head input::placeholder {
@@ -222,7 +232,7 @@ a:hover {
   background-size: cover;
 }
 
-.box.user {
+.box.users {
   background-image: url("https://thumbs.dreamstime.com/b/crowd-people-big-group-different-vector-217219663.jpg");
   background-size: cover;
 }
@@ -233,7 +243,7 @@ a:hover {
 }
 
 .box p.value {
-  font-size: 14px;
+  font-size: 17px;
 }
 
 .content .wrapper {
@@ -349,7 +359,6 @@ a:hover {
   padding-inline: 20px;
   background-color: var(--bg-p);
   border-radius: 18px;
-  scale: 0;
   transition: scale 0.8s ease-in;
 }
 .popup h2 {
@@ -363,21 +372,22 @@ a:hover {
   width: 100%;
   color: var(--text-p);
   margin-top: 10px;
+  font-size: 20px;
   /* border: 1px solid; */
 }
 
 .form-input input {
   border: none;
   outline: none;
-  height: 30px;
+  min-height: 30px;
   width: 100%;
   box-shadow: 0 0 10px 2px var(--text-p);
   padding-inline: 10px;
-  font-size: 15px;
+  font-size: 17px;
   border-radius: 8px;
 }
 .form-input input.file {
-  padding-top: 5px;
+  padding: 5px;
 }
 .form-action {
   display: flex;
@@ -385,6 +395,9 @@ a:hover {
   width: 100%;
   margin-top: 50px;
   gap: 10px;
+}
+.form-action button {
+  font-size: 17px;
 }
 .form-action button.tambah {
   height: 35px;
@@ -433,10 +446,15 @@ button.close:hover {
   padding-inline: 10px;
   border-radius: 8px;
 }
-
+.message.error{
+  background-color: red;
+}
 /* menu sidebar */
 .closemenu {
   display: none;
+}
+.aksi-tambah button {
+  font-size: 17px;
 }
 
 @media screen and (max-width: 1400px) {

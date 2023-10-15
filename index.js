@@ -1,3 +1,4 @@
+const fs = require("fs");
 const express = require("express");
 const session = require("express-session");
 const cookieParser = require("cookie-parser");
@@ -6,7 +7,7 @@ const multer = require("multer");
 const expressLayout = require("express-ejs-layouts");
 const app = express();
 const port = 3000;
-const { generateId, generateImage } = require("./utils/generate");
+const { generateId, generateImage, deleteImage } = require("./utils/generate");
 const methodOverride = require("method-override");
 
 // multer
@@ -92,25 +93,82 @@ app.post("/dashboard/produk", multerUpload.single("image"), (req, res) => {
   req.flash("msg", "Data Produk Berhasil Ditambahkan !");
   res.redirect("/dashboard/produk");
 });
+app.get("/dashboard/produk/detail/:id", async (req, res) => {
+  const product = await Product.findOne({ id: req.params.id });
+  res.render("dashboard/detailproduk", {
+    layout: "layouts/layout",
+    title: "Detail Produk | Dashboard Admin",
+    nama: "Muhammad Raka",
+    product,
+  });
+});
+app.delete("/dashboard/produk", async (req, res) => {
+  const product = await Product.findOne({ id: req.body.id });
+  const oldImage = product.image;
+  fs.unlinkSync(`${__dirname}/public/img/${oldImage}`);
+  Product.deleteOne({ id: req.body.id }).then((result) => {
+    req.flash("msg", "Data Produk Berhasil Dihapus !");
+    res.redirect("/dashboard/produk");
+  });
+});
+
+app.get("/dashboard/produk/ubah/:id", async (req, res) => {
+  const product = await Product.findOne({ id: req.params.id });
+  res.render("dashboard/ubahproduk", {
+    layout: "layouts/layout",
+    title: "Ubah Produk | Dashboard Admin",
+    nama: "Muhammad Raka",
+    product,
+  });
+});
+
+app.put(
+  "/dashboard/ubahproduk",
+  multerUpload.single("image"),
+  async (req, res) => {
+    const product = await Product.findOne({ id: req.body.id });
+    const oldImage = product.image;
+    if (!req.file) {
+      Product.updateOne(
+        { id: req.body.id },
+        {
+          $set: {
+            nama: req.body.nama,
+            harga: req.body.harga,
+            stok: req.body.stok,
+            jenis: req.body.jenis,
+          },
+        }
+      ).then((result) => {
+        req.flash("msg", "Data Produk Berhasil Diubah!");
+        res.redirect("/dashboard/produk");
+      });
+    } else {
+      fs.unlinkSync(`${__dirname}/public/img/${oldImage}`);
+      Product.updateOne(
+        { id: req.body.id },
+        {
+          $set: {
+            nama: req.body.nama,
+            harga: req.body.harga,
+            stok: req.body.stok,
+            jenis: req.body.jenis,
+            image: req.file.originalname,
+          },
+        }
+      ).then((result) => {
+        req.flash("msg", "Data Produk Berhasil Diubah!");
+        res.redirect("/dashboard/produk");
+      });
+    }
+  }
+);
+
 app.get("/dashboard/penjualan", (req, res) => {
   res.render("dashboard/penjualan", {
     layout: "layouts/layout",
     title: "Data Penjualan | Dashboard Admin",
     nama: "Muhammad Raka",
-  });
-});
-app.get("/dashboard/produk/detail/:id", (req, res) => {
-  console.log(req.params.id);
-  res.redirect("/dashboard/produk");
-});
-app.get("/dashboard/produk/ubah/:id", (req, res) => {
-  console.log(req.params.id);
-  res.redirect("/dashboard/produk");
-});
-app.get("/dashboard/produk/hapus/:id", (req, res) => {
-  Product.deleteOne({ id: req.params.id }).then((result) => {
-    req.flash("msg", "Data Produk Berhasil Ditambahkan !");
-    res.redirect("/dashboard/produk");
   });
 });
 app.get("/dashboard/user", async (req, res) => {
@@ -123,6 +181,7 @@ app.get("/dashboard/user", async (req, res) => {
     users,
     id,
     msg: req.flash("msg"),
+    errormsg: req.flash("err"),
   });
 });
 
@@ -131,6 +190,9 @@ app.post("/dashboard/user", multerUploadUser.single("image"), (req, res) => {
   User.insertMany({
     id: req.body.id,
     nama: req.body.nama,
+    username: req.body.username,
+    email: req.body.email,
+    password: req.body.password,
     jk: req.body.jk,
     alamat: req.body.alamat,
     nohp: req.body.nohp,
@@ -139,10 +201,109 @@ app.post("/dashboard/user", multerUploadUser.single("image"), (req, res) => {
   req.flash("msg", "Data User Berhasil Ditambahkan !");
   res.redirect("/dashboard/user");
 });
-app.get("/dashboard/user/hapus/:id", (req, res) => {
-  User.deleteOne({ id: req.params.id }).then((result) => {
-    req.flash("msg", "Data Produk Berhasil Dihapus !");
+app.delete("/dashboard/user", async (req, res) => {
+  const user = await User.findOne({ id: req.body.id });
+  const oldImage = user.image;
+  deleteImage(oldImage);
+  User.deleteOne({ id: req.body.id }).then((result) => {
+    req.flash("msg", "Data User Berhasil Dihapus !");
     res.redirect("/dashboard/user");
+  });
+});
+
+app.get("/dashboard/user/ubah/:id", async (req, res) => {
+  const user = await User.findOne({ id: req.params.id });
+  res.render("dashboard/ubahuser", {
+    layout: "layouts/layout",
+    title: "Ubah User | Dashboard Admin",
+    nama: "Muhammad Raka",
+    user,
+    msg: req.flash("msg"),	
+  });
+});
+
+app.put(
+  "/dashboard/user",
+  multerUploadUser.single("image"),
+  async (req, res) => {
+    const user = await User.findOne({ id: req.body.id });
+    const oldImage = user.image;
+    if (!req.file) {
+      User.updateOne(
+        { id: req.body.id },
+        {
+          $set: {
+            nama: req.body.nama,
+            username: req.body.username,
+            email: req.body.email,
+            alamat: req.body.alamat,
+            nohp: req.body.nohp,
+          },
+        }
+      ).then((result) => {
+        req.flash("msg", "Data User Berhasil Di Ubah!");
+        res.redirect("/dashboard/user");
+      });
+    } else {
+      deleteImage(oldImage);
+      User.updateOne(
+        { id: req.body.id },
+        {
+          $set: {
+            nama: req.body.nama,
+            username: req.body.username,
+            email: req.body.email,
+            alamat: req.body.alamat,
+            nohp: req.body.nohp,
+            image: req.file.origialname,
+          },
+        }
+      ).then((result) => {
+        req.flash("msg", "Data User Berhasil Di Ubah");
+        res.redirect("/dashboard/user");
+      });
+    }
+  }
+);
+app.get("/dashboard/user/ubahpassword/:id", async (req, res) => {
+  const user = await User.findOne({ id: req.params.id });
+  res.render("dashboard/ubahpassword", {
+    layout: "layouts/layout",
+    title: "Ubah Password | Dashboard Admin",
+    nama: "Muhammad Raka",
+    user,
+    errormsg: req.flash("errormsg"),
+  });
+});
+app.put("/dashboard/user/ubahpassword", async (req, res) => {
+  const user = await User.findOne({ id: req.body.id });
+  const oldPassword = user.password;
+  const authPassword = req.body.password;
+  const newPassword1 = req.body.newpassword1;
+  const newPassword2 = req.body.newpassword2;
+
+  if (authPassword != oldPassword) {
+    req.flash("errormsg","password lama salah");
+res.redirect(`/dashboard/user/ubahpassword/${user.id}`);	
+  }
+  else {
+    if (newPassword1 != newPassword2) {
+      req.flash("errormsg","password 1 dan 2 tidak sama");
+res.redirect(`/dashboard/user/ubahpassword/${user.id}`);	
+   } else {
+     req.flash("msg","sukses");
+    res.redirect(`/dashboard/user/ubah/${user.id}`);	 
+}
+  }
+
+});
+app.get("/dashboard/user/detail/:id", async (req, res) => {
+  const user = await User.findOne({ id: req.params.id });
+  res.render("dashboard/detailuser", {
+    layout: "layouts/layout",
+    title: "Detail User | Dashboard Admin",
+    nama: "Muhammad Raka",
+    user,
   });
 });
 
