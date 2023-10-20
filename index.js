@@ -283,16 +283,24 @@ app.put("/dashboard/user/ubahpassword", async (req, res) => {
   const newPassword2 = req.body.newpassword2;
 
   if (authPassword != oldPassword) {
-    req.flash("errormsg","password lama salah");
-res.redirect(`/dashboard/user/ubahpassword/${user.id}`);	
+   	req.flash("errormsg","Password lama salah!");
+	res.redirect(`/dashboard/user/ubahpassword/${user.id}`);	
   }
   else {
     if (newPassword1 != newPassword2) {
-      req.flash("errormsg","password 1 dan 2 tidak sama");
-res.redirect(`/dashboard/user/ubahpassword/${user.id}`);	
+      	req.flash("errormsg","Password Baru dan Konfirmasi Password tidak sama!");
+	res.redirect(`/dashboard/user/ubahpassword/${user.id}`);	
    } else {
-     req.flash("msg","sukses");
-    res.redirect(`/dashboard/user/ubah/${user.id}`);	 
+	User.updateOne({id: req.body.id}, 
+	{$set:{
+	  password: req.body.newpassword1
+	},
+	}).then((result)=>{
+	req.flash("msg","Password Berhasil Diubah!");
+    	res.redirect(`/dashboard/user/ubah/${user.id}`);
+	console.log(user.password)	 
+})
+     	
 }
   }
 
